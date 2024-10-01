@@ -5,7 +5,7 @@ const SearchBar = ({ searchQuery, onSearchChange }) => {
         <div className="search-bar">
             <input
                 type="text"
-                placeholder="Search questions..."
+                placeholder="Search"
                 value={searchQuery}
                 onChange={onSearchChange}
             />

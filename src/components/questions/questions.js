@@ -26,18 +26,30 @@ const QuestionsList = ({ questions, isLoading, hasMore, selectedTag, fetchQuesti
     );
 
     return (
-        <div>
+        <div className="question-wrapper">
             {filteredQuestions.length === 0 ? (
-                <p>No questions found.</p>
+                <p className="no-questions">No questions found.</p>
             ) : (
                 filteredQuestions.map(question => (
-                    <div key={question.question_id} className="question-card">
-                        <h2><a href={question.link} target="_blank" rel="noreferrer">{question.title}</a></h2>
-                        <p className="score">Score: {question.score}</p>
-                        <p className="answers">Answers: {question.answer_count}</p>
-                        <p className="viewed">Viewed: {question.view_count}</p>
-                        <img className="profile-pic" src={question.owner.profile_image} alt="Profile" />
-                    </div>
+                    <a href={question.link} target="_blank" rel="noreferrer">
+                        <div key={question.question_id} className="question-card">
+                            <h2>
+                                    {question.title}
+                            </h2>
+                            {/* Highlight score when it's below zero */}
+                            <p className="score" style={{ color: question.score < 0 ? 'red' : 'black' }}>
+                                Score: {question.score}
+                            </p>
+                            {/* Highlight answers based on conditions */}
+                            <p
+                                className={`answers ${question.answer_count > 1 && !question.is_answered ? 'highlight-border' : ''} ${question.answer_count > 1 && question.is_answered ? 'highlight' : ''}`}
+                            >
+                                Answers: {question.answer_count}
+                            </p>
+                            <p className="viewed">Viewed: {question.view_count}</p>
+                            <img className="profile-pic" src={question.owner.profile_image} alt="Profile" />
+                        </div>
+                    </a>
                 ))
             )}
             {isLoading && <p className="loading">Loading...</p>}
