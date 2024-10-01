@@ -1,22 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import QuestionsList from './components/questions/questions';
+import Tags from './components/tags/tag'
 
 const App = () => {
-    const [selectedTag, setSelectedTag] = useState('javascript');
-    const tags = ['javascript', 'reactjs', 'vuejs', 'node.js'];  // Example tags
-
     return (
         <div>
             <h1>StackOverflow Questions</h1>
-            <select onChange={(e) => setSelectedTag(e.target.value)} value={selectedTag}>
-                {tags.map(tag => (
-                    <option key={tag} value={tag}>
-                        {tag}
-                    </option>
-                ))}
-            </select>
-
-            <QuestionsList selectedTag={selectedTag} />
+            <Tags />
+            <QuestionsList />
         </div>
     );
 };
