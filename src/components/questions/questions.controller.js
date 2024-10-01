@@ -3,8 +3,8 @@ import { fetchQuestionsRequest } from '../../redux/action/action.questions'
 export const mapState = (state) => {
     return ({
         questions: state.questions.questions,
-        isLoading: state.isLoading,
-        hasMore: state.hasMore,
+        isLoading: state.questions.isLoading,
+        hasMore: state.questions.hasMore,
     })
 };
 

@@ -21,7 +21,7 @@ const reducerQuestions = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 questions: newQuestions,
-                hasMore: action.payload.length === 20,
+                hasMore: action.payload.questions.length === 20,
                 currentTag: action.payload.tag
             };
 
