@@ -4,10 +4,14 @@ import { connect } from 'react-redux';
 import { mapState, mapDispatch } from './tag.controller'
 import '../../App.css';
 
-const Tags = ({ tags = [], fetchTags, onTagSelect }) => {
+const Tags = ({ tags = [], fetchTags, onTagSelect, setTags }) => {
     useEffect(() => {
         fetchTags()
     }, [fetchTags]);
+
+    useEffect(() => {
+        setTags(tags)
+    }, [tags, setTags]);
 
     const handleTagClick = (tag) => {
         onTagSelect(tag)
