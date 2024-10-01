@@ -24,10 +24,12 @@ const App = () => {
 
     return (
         <div className="container">
-            <SearchBar searchQuery={searchQuery} onSearchChange={handleSearchChange} />
-            <h1>Trending</h1>
-            <Tags onTagSelect={handleTagSelect} setTags={setTags} searchQuery={searchQuery}/>
-            <QuestionsList selectedTag={selectedTag} searchQuery={searchQuery} />
+            <div className="static-wrapper">
+                <SearchBar searchQuery={searchQuery} onSearchChange={handleSearchChange} />
+                <h1>Trending</h1>
+                <Tags onTagSelect={handleTagSelect} setTags={setTags} searchQuery={searchQuery}/>
+            </div>
+            <QuestionsList className="question-list" selectedTag={selectedTag} searchQuery={searchQuery} />
         </div>
     );
 };
