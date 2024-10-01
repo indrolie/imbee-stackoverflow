@@ -6,7 +6,10 @@ import { fetchQuestionsApi } from './api/api.questions'
 export function* fetchQuestions(action) {
     try {
         const response = yield call(fetchQuestionsApi, action.payload.tag, action.payload.page);
-        yield put(fetchQuestionsSuccess(response.data.items));
+        yield put(fetchQuestionsSuccess({
+            questions: response.data.items,
+            tag: action.payload.tag
+        }));
     } catch (error) {
         yield put(fetchQuestionsFailure(error.message));
     }

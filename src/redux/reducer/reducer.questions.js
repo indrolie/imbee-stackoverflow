@@ -13,11 +13,16 @@ const reducerQuestions = (state = initialState, action) => {
             return { ...state, isLoading: true, error: null };
 
         case FETCH_QUESTIONS_SUCCESS:
+            const newQuestions = state.currentTag === action.payload.tag 
+                ? [...state.questions, ...action.payload.questions]
+                : action.payload.questions;  // refresh the list of questions if using new tag
+
             return {
                 ...state,
                 isLoading: false,
-                questions: [...state.questions, ...action.payload],
-                hasMore: action.payload.length === 20
+                questions: newQuestions,
+                hasMore: action.payload.length === 20,
+                currentTag: action.payload.tag
             };
 
         case FETCH_QUESTIONS_FAILURE:
