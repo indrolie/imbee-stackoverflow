@@ -17,7 +17,7 @@ const App = () => {
     }, [tags, selectedTag]);
 
     return (
-        <div>
+        <div className="container">
             <h1>StackOverflow Questions</h1>
             <Tags onTagSelect={handleTagSelect} setTags={setTags} />
             <QuestionsList selectedTag={selectedTag} />

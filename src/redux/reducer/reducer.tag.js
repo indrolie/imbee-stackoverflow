@@ -2,11 +2,9 @@ import { FETCH_TAGS_REQUEST, FETCH_TAGS_SUCCESS, FETCH_TAGS_FAILURE } from '../t
 
 const initialState = {
     tags: [],
-    questions: [],
     isLoading: false,
     error: null,
-    selectedTag: '',
-    hasMore: true,
+    selectedTag: ''
 };
 
 const tagsReducer = (state = initialState, action) => {

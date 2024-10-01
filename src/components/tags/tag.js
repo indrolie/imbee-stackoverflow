@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { mapState, mapDispatch } from './tag.controller'
 import '../../App.css';
 
-const Tags = ({ tags = [], fetchTags, onTagSelect, setTags }) => {
+const Tags = ({ tags = [], fetchTags, onTagSelect, setTags, selectedTag }) => {
     useEffect(() => {
         fetchTags()
     }, [fetchTags]);
@@ -20,7 +20,11 @@ const Tags = ({ tags = [], fetchTags, onTagSelect, setTags }) => {
     return (
         <div className="tags">
             {tags.map((tag) => (
-                <div key={tag.name} className="tag" onClick={() => handleTagClick(tag.name)}>
+                <div
+                    key={tag.name}
+                    className={`tag ${selectedTag === tag.name ? 'selected' : ''}`}
+                    onClick={() => handleTagClick(tag.name)}
+                >
                     {tag.name}
                 </div>
             ))}
