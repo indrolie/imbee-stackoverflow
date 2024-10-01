@@ -1,19 +1,7 @@
 import { call, put } from 'redux-saga/effects';
 import axios from 'axios';
 import { fetchQuestionsSuccess, fetchQuestionsFailure } from '../action/action.questions'
-
-const fetchQuestionsApi = (tag, page) => {
-    return axios.get('https://api.stackexchange.com/2.3/questions', {
-        params: {
-            page,
-            pagesize: 20,
-            order: 'desc',
-            sort: 'activity',
-            tagged: tag,
-            site: 'stackoverflow',
-        }
-    });
-};
+import { fetchQuestionsApi } from './api/api.questions'
 
 export function* fetchQuestions(action) {
     try {
