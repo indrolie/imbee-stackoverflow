@@ -1,7 +1,6 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put } from 'redux-saga/effects';
 import axios from 'axios';
-import { FETCH_QUESTIONS_REQUEST } from '../type/type';
-import { fetchQuestionsSuccess, fetchQuestionsFailure } from '../action/action'
+import { fetchQuestionsSuccess, fetchQuestionsFailure } from '../action/action.questions'
 
 const fetchQuestionsApi = (tag, page) => {
     return axios.get('https://api.stackexchange.com/2.2/questions', {
@@ -16,7 +15,7 @@ const fetchQuestionsApi = (tag, page) => {
     });
 };
 
-function* fetchQuestions(action) {
+export function* fetchQuestions(action) {
     try {
         const response = yield call(fetchQuestionsApi, action.payload.tag, action.payload.page);
         yield put(fetchQuestionsSuccess(response.data.items));
@@ -24,9 +23,3 @@ function* fetchQuestions(action) {
         yield put(fetchQuestionsFailure(error.message));
     }
 }
-
-function* rootSaga() {
-    yield takeLatest(FETCH_QUESTIONS_REQUEST, fetchQuestions);
-}
-
-export default rootSaga;

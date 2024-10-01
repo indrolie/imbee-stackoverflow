@@ -1,4 +1,4 @@
-import { FETCH_QUESTIONS_REQUEST, FETCH_QUESTIONS_SUCCESS, FETCH_QUESTIONS_FAILURE } from '../type/type';
+import { FETCH_QUESTIONS_REQUEST, FETCH_QUESTIONS_SUCCESS, FETCH_QUESTIONS_FAILURE } from '../type/type.questions';
 
 const initialState = {
     questions: [],
@@ -7,7 +7,7 @@ const initialState = {
     hasMore: true,
 };
 
-const rootReducer = (state = initialState, action) => {
+const reducerQuestions = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_QUESTIONS_REQUEST:
             return { ...state, isLoading: true, error: null };
@@ -28,4 +28,4 @@ const rootReducer = (state = initialState, action) => {
     }
 };
 
-export default rootReducer;
+export default reducerQuestions;

@@ -1,4 +1,4 @@
-import { FETCH_QUESTIONS_REQUEST, FETCH_QUESTIONS_SUCCESS, FETCH_QUESTIONS_FAILURE } from '../type/type'
+import { FETCH_QUESTIONS_REQUEST, FETCH_QUESTIONS_SUCCESS, FETCH_QUESTIONS_FAILURE } from '../type/type.questions'
 
 
 export const fetchQuestionsRequest = (tag, page) => ({
