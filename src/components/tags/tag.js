@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import { mapState, mapDispatch } from './tag.controller'
 import '../../App.css';
 
-const Tags = ({ tags = [], fetchTags }) => {
+const Tags = ({ tags = [], fetchTags, onTagSelect }) => {
     useEffect(() => {
-        fetchTags();
+        fetchTags()
     }, [fetchTags]);
 
     const handleTagClick = (tag) => {
-        // fetchQuestions(tag, 1); // Fetch questions for the clicked tag
+        onTagSelect(tag)
     };
 
     return (
