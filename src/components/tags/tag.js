@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { mapState, mapDispatch } from './tag.controller'
 import '../../App.css';
 
-const Tags = ({ tags = [], fetchTags, onTagSelect, setTags, selectedTag }) => {
+const Tags = ({ tags = [], fetchTags, onTagSelect, setTags, selectedTag, searchQuery }) => {
     useEffect(() => {
         fetchTags()
     }, [fetchTags]);
@@ -17,9 +17,13 @@ const Tags = ({ tags = [], fetchTags, onTagSelect, setTags, selectedTag }) => {
         onTagSelect(tag)
     };
 
+    const filteredTags = tags.filter(tag => 
+        tag.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <div className="tags">
-            {tags.map((tag) => (
+            {filteredTags.map((tag) => (
                 <div
                     key={tag.name}
                     className={`tag ${selectedTag === tag.name ? 'selected' : ''}`}
