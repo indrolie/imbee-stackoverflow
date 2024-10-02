@@ -35,12 +35,11 @@ const QuestionsList = ({ questions, isLoading, hasMore, selectedTag, fetchQuesti
                 filteredQuestions.map(question => (
                     <a href={question.link} target="_blank" rel="noreferrer">
                         <div key={question.question_id} className="question-card">
-                            <div className="question-header">
-                                <h2> {question.title} </h2>
-                            </div>
-                            
-                            <div className="question-body">
+                            <div className="question-content">
                                 <div className="left-section">
+                                    <div className="question-title">
+                                        <h2> {question.title} </h2>
+                                    </div>
                                     <div className="question-stats">
                                         <div className="score">
                                             {/* Highlight score when it's below zero */}
