@@ -29,8 +29,8 @@ const QuestionsList = ({ questions, isLoading, hasMore, selectedTag, fetchQuesti
 
     return (
         <div className="question-wrapper">
-            {filteredQuestions.length === 0 ? (
-                <p className="no-questions">No questions found.</p>
+            { !isLoading && filteredQuestions.length === 0 ? (
+                <p className="no-questions">No questions found for your tag.</p>
             ) : (
                 filteredQuestions.map(question => (
                     <a href={question.link} target="_blank" rel="noreferrer">
@@ -68,7 +68,11 @@ const QuestionsList = ({ questions, isLoading, hasMore, selectedTag, fetchQuesti
                     </a>
                 ))
             )}
-            {isLoading && <p className="loading">Loading...</p>}
+            {isLoading && (
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                </div>
+            )}
             {!hasMore && <p className="loading">No more questions available</p>}
         </div>
     );

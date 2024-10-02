@@ -3,7 +3,8 @@ import { fetchTagsRequest } from '../../redux/action/action.tag'
 export const mapState = (state) => {
     return ({
         tags: state.tags.tags,
-        selectedTag: state.questions.currentTag
+        selectedTag: state.questions.currentTag,
+        isLoading: state.tags.isLoading
     })
 };
 
