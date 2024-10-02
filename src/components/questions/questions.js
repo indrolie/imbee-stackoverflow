@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { mapState, mapDispatch } from './questions.controller'
 import '../../App.css';
 
+import UserProfile from '../user_profile/user_profile'
+
 const QuestionsList = ({ questions, isLoading, hasMore, selectedTag, fetchQuestions, searchQuery }) => {
     useEffect(() => {
         fetchQuestions(selectedTag, 1);  
@@ -60,10 +62,7 @@ const QuestionsList = ({ questions, isLoading, hasMore, selectedTag, fetchQuesti
                                 </div>
                                     
                                 <div className="right-section">
-                                    <div className="user-info">
-                                        <img src={question.owner.profile_image} alt="Profile" className="profile-pic" />
-                                        <span className="profile-name">{question.owner.display_name}</span>
-                                    </div>
+                                    <UserProfile user={question.owner} />
                                 </div>
                             </div>
                         </div>
