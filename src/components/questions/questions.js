@@ -33,21 +33,39 @@ const QuestionsList = ({ questions, isLoading, hasMore, selectedTag, fetchQuesti
                 filteredQuestions.map(question => (
                     <a href={question.link} target="_blank" rel="noreferrer">
                         <div key={question.question_id} className="question-card">
-                            <h2>
-                                    {question.title}
-                            </h2>
-                            {/* Highlight score when it's below zero */}
-                            <p className="score" style={{ color: question.score < 0 ? 'red' : 'black' }}>
-                                Score: {question.score}
-                            </p>
-                            {/* Highlight answers based on conditions */}
-                            <p
-                                className={`answers ${question.answer_count > 1 && !question.is_answered ? 'highlight-border' : ''} ${question.answer_count > 1 && question.is_answered ? 'highlight' : ''}`}
-                            >
-                                Answers: {question.answer_count}
-                            </p>
-                            <p className="viewed">Viewed: {question.view_count}</p>
-                            <img className="profile-pic" src={question.owner.profile_image} alt="Profile" />
+                            <div className="question-header">
+                                <h2> {question.title} </h2>
+                            </div>
+                            
+                            <div className="question-body">
+                                <div className="left-section">
+                                    <div className="question-stats">
+                                        <div className="score">
+                                            {/* Highlight score when it's below zero */}
+                                            <span className='item-name' style={{ color: question.score < 0 ? 'red' : 'black' }}>Score</span>
+                                            <span className="item-value" style={{ color: question.score < 0 ? 'red' : 'black' }}>{question.score}</span>
+                                        </div>
+                                        <div className="answers">
+                                            {/* Highlight answers based on conditions */}
+                                            <span className='item-name'>Answers</span>
+                                            <span className={`item-value ${question.answer_count > 1 && !question.is_answered ? 'highlight-border' : ''} ${question.answer_count > 1 && question.is_answered ? 'highlight' : ''}`}>
+                                                {question.answer_count}
+                                            </span>
+                                        </div>
+                                        <div className="views">
+                                            <span className='item-name'>Viewed</span>
+                                            <span className="item-value">{question.view_count}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                    
+                                <div className="right-section">
+                                    <div className="user-info">
+                                        <img src={question.owner.profile_image} alt="Profile" className="profile-pic" />
+                                        <span className="profile-name">{question.owner.display_name}</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </a>
                 ))
